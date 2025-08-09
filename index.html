@@ -1,150 +1,370 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us | Professional Form</title>
+    <title>TARQEEM</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;600;700&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Boldonse&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        .input-focus-effect:focus-within {
-            box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5);
-            border-color: #3b82f6;
-        }
-        .animate-fade-in {
-            animation: fadeIn 0.5s ease-in-out;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-gray-50 min-h-screen flex items-center justify-center p-4">
-    <div class="max-w-md w-full bg-white rounded-xl shadow-lg overflow-hidden animate-fade-in">
-        <div class="bg-gradient-to-r from-blue-600 to-blue-400 p-6 text-white">
-            <h1 class="text-2xl font-bold">Contact Us</h1>
-            <p class="text-blue-100">We'd love to hear from you!</p>
+
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <!-- Logo Section -->
+            <div class="logo-section">
+                <img src="logo.png" alt="Logo" class="logo-icon">
+                <div class="logo-text">TARQEEM</div>
+            </div>
+
+            <!-- Desktop Navigation -->
+            <div class="nav-container">
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a class="high" href="#highlights">Highlights</a></li>
+                    <li><a href="#sponsor">Sponsor</a></li>
+                </ul>
+                <button class="sign-in-btn">Sign In</button>
+            </div>
+
+            <!-- Mobile Sign In (visible on mobile) -->
+            <button class="sign-in-btn" style="display: none;" id="mobileSignIn">Sign In</button>
+
+            <!-- Mobile Menu Toggle -->
+            <button class="mobile-toggle" onclick="toggleMobileMenu()" aria-label="Toggle navigation">
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+        </nav>
+
+        <!-- Mobile Menu -->
+        <div class="mobile-menu" id="mobileMenu" onclick="closeMobileMenu(event)">
+            <div class="mobile-menu-content" onclick="event.stopPropagation()">
+                <div class="mobile-menu-header">
+                    <div class="logo-section">
+                        <div class="logo-icon" style="width: 32px; height: 32px; font-size: 14px;">T</div>
+                        <div class="logo-text" style="font-size: 18px;">TARQEEM</div>
+                    </div>
+                    <button class="mobile-close" onclick="closeMobileMenu()" aria-label="Close menu">✕</button>
+                </div>
+
+                <ul class="mobile-nav-links">
+                    <li><a href="index.html" onclick="closeMobileMenu()">Home</a></li>
+                    <li><a href="about.html" onclick="closeMobileMenu()">About</a></li>
+                    <li><a href="contact.html" onclick="closeMobileMenu()">Contact</a></li>
+                    <li><a href="#highlights" onclick="closeMobileMenu()">Past Highlights</a></li>
+                    <li><a href="#sponsor" onclick="closeMobileMenu()">Sponsor</a></li>
+                </ul>
+
+                <div class="mobile-sign-in">
+                    <button class="sign-in-btn" style="width: 100%; padding: 14px;" onclick="closeMobileMenu()">Sign
+                        In</button>
+                </div>
+            </div>
         </div>
-        
-        <form class="p-6 space-y-6" id="contactForm">
-            <div class="space-y-1">
-                <label class="block text-sm font-medium text-gray-700" for="name">Full Name</label>
-                <div class="relative input-focus-effect border border-gray-300 rounded-lg transition-all duration-200">
-                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-400">
-                        <i class="fas fa-user"></i>
-                    </div>
-                    <input id="name" name="name" type="text" placeholder="John Doe" required 
-                        class="block w-full pl-10 pr-3 py-3 rounded-lg bg-transparent focus:outline-none text-gray-700">
-                </div>
-            </div>
-            
-            <div class="space-y-1">
-                <label class="block text-sm font-medium text-gray-700" for="email">Email Address</label>
-                <div class="relative input-focus-effect border border-gray-300 rounded-lg transition-all duration-200">
-                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-400">
-                        <i class="fas fa-envelope"></i>
-                    </div>
-                    <input id="email" name="email" type="email" placeholder="john@example.com" required 
-                        class="block w-full pl-10 pr-3 py-3 rounded-lg bg-transparent focus:outline-none text-gray-700">
-                </div>
-            </div>
-            
-            <div class="space-y-1">
-                <label class="block text-sm font-medium text-gray-700" for="phone">Phone Number</label>
-                <div class="relative input-focus-effect border border-gray-300 rounded-lg transition-all duration-200">
-                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-400">
-                        <i class="fas fa-phone"></i>
-                    </div>
-                    <input id="phone" name="phone" type="tel" placeholder="+1 (555) 123-4567" 
-                        class="block w-full pl-10 pr-3 py-3 rounded-lg bg-transparent focus:outline-none text-gray-700">
-                </div>
-            </div>
-            
-            <div class="space-y-1">
-                <label class="block text-sm font-medium text-gray-700" for="address">Address (Optional)</label>
-                <div class="relative input-focus-effect border border-gray-300 rounded-lg transition-all duration-200">
-                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-400">
-                        <i class="fas fa-map-marker-alt"></i>
-                    </div>
-                    <input id="address" name="address" type="text" placeholder="123 Main St, City" 
-                        class="block w-full pl-10 pr-3 py-3 rounded-lg bg-transparent focus:outline-none text-gray-700">
-                </div>
-            </div>
-            
-            <div class="space-y-1">
-                <label class="block text-sm font-medium text-gray-700" for="message">Your Message</label>
-                <div class="relative input-focus-effect border border-gray-300 rounded-lg transition-all duration-200">
-                    <div class="absolute inset-y-0 left-0 pl-3 pt-3 flex items-start pointer-events-none text-gray-400">
-                        <i class="fas fa-comment"></i>
-                    </div>
-                    <textarea id="message" name="message" rows="4" placeholder="How can we help you?" required 
-                        class="block w-full pl-10 pr-3 py-3 rounded-lg bg-transparent focus:outline-none text-gray-700 resize-none"></textarea>
-                </div>
-            </div>
-            
-            <div class="flex items-center">
-                <input id="remember" name="remember" type="checkbox" 
-                    class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
-                <label for="remember" class="ml-2 block text-sm text-gray-700">
-                    Save my information for future contact
-                </label>
-            </div>
-            
-            <div>
-                <button type="submit" id="submitBtn"
-                    class="w-full flex justify-center items-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors duration-200">
-                    <i class="fas fa-paper-plane mr-2"></i> Send Message
-                </button>
-            </div>
-        </form>
-        
-        <div class="px-6 py-4 bg-gray-50 border-t border-gray-200 text-center">
-            <p class="text-xs text-gray-500">
-                We'll get back to you within 24 hours. For urgent matters, please call <span class="text-blue-600">+1 (800) 123-4567</span>
-            </p>
+    </header>
+
+    <div class="hero-box"></div>
+    <div class="triangle-clippath"></div>
+    <div class="hero-text">
+        <h1 class="hero-title">TARQEEM MUSHAIRA</h1>
+        <p class="hero-subtitle">TarQeem is a non-profit organization dedicated to promoting culture, literature, and
+            language. Our mission is to bring communities together through events</p>
+        <div class="hero-buttons">
+            <button class="hero-btn">Contact</button>
+            <button class="hero-btn2">Sponsor</button>
+        </div>
+    </div>
+    <div class="texts">INTERATIONAL</div>
+    <div class="texts2">MUSHAIRA</div>
+    <div class="time">23 AUGUST, 2025</div>
+
+    <!-- Image Slideshow -->
+    <div class="image-slideshow">
+        <img src="img1.png" alt="Hero Image" class="slide active">
+        <img src="img2.png" alt="Hero Image" class="slide">
+        <img src="img3.png" alt="Hero Image" class="slide">
+        <img src="img4.png" alt="Hero Image" class="slide">
+        <img src="img5.png" alt="Hero Image" class="slide">
+        <img src="img6.png" alt="Hero Image" class="slide">
+        <img src="img7.png" alt="Hero Image" class="slide">
+        <img src="img8.png" alt="Hero Image" class="slide">
+        <img src="img9.png" alt="Hero Image" class="slide">
+        <img src="img10.png" alt="Hero Image" class="slide">
+        <img src="img11.png" alt="Hero Image" class="slide">
+    </div>
+    <div id="toast" class="toast hidden">
+        <div class="toast-content">
+            <span>Buy Ticket for Free</span>
+            <button class="toast-button">Free</button>
+            <button class="toast-close">&times;</button>
         </div>
     </div>
 
-    <div id="successModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-        <div class="bg-white rounded-xl max-w-sm w-full p-6 text-center animate-fade-in">
-            <div class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-green-100">
-                <i class="fas fa-check text-green-600"></i>
+    <button class="register-btn">Register For FREE</button>
+
+    <section class="py-16 bg-gray-50" id="upcoming-event">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900">Upcoming Event</h2>
+            <div class="relative h-1 w-32 mx-auto bg-gradient-to-r from-yellow-400 to-yellow-400 mb-16"></div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Event Card 1 -->
+                <div
+                    class="bg-gradient-to-br from-indigo-900 to-indigo-800 rounded-2xl overflow-hidden shadow-xl border-2 border-yellow-400">
+                    <img src="main.jpg" alt="Event Image" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-yellow-400 mb-2">TARQEEM MUSHAIRA</h3>
+                        <p class="text-gray-200">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur laborum a accusantium
+                            debitis atque natus quis odio officia.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Event Details Card -->
+                <div
+                    class="bg-gradient-to-br from-indigo-900 to-indigo-800 rounded-2xl overflow-hidden shadow-xl border-2 border-yellow-400">
+                    <div class="p-6">
+                        <div class="grid grid-cols-[35%_65%]">
+                            <div class="border-b border-yellow-400 border-r">
+                                <p class="p-4 text-yellow-400 font-medium">Date</p>
+                            </div>
+                            <div class="border-b border-yellow-400">
+                                <p class="p-4 text-white">23 August, 2025</p>
+                            </div>
+
+                            <div class="border-b border-yellow-400 border-r">
+                                <p class="p-4 text-yellow-400 font-medium">Location</p>
+                            </div>
+                            <div class="border-b border-yellow-400">
+                                <p class="p-4 text-white">Pakistan Social Center<br>Sharjah UAE</p>
+                            </div>
+
+                            <div class="border-b border-yellow-400 border-r">
+                                <p class="p-4 text-yellow-400 font-medium">Time</p>
+                            </div>
+                            <div class="border-b border-yellow-400">
+                                <p class="p-4 text-white">6:00 PM</p>
+                            </div>
+
+                            <div class="border-r border-yellow-400">
+                                <p class="p-4 text-yellow-400 font-medium">Price</p>
+                            </div>
+                            <div>
+                                <p class="p-4 text-white">Free</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Past Highlights Card -->
+                <div class="card3">
+                    <div class="slideshow-container">
+                        <div class="slideshow">
+                            <!-- Images will be added by JavaScript -->
+                        </div>
+                        <div class="slideshow-dots"></div>
+                    </div>
+                    <div class="event-details">
+                        <h2 class="event-title">PAST HIGHLIGHTS</h2>
+                        <p class="event-description">View our previous successful events</p>
+                    </div>
+                </div>
             </div>
-            <h3 class="mt-3 text-lg font-medium text-gray-900">Message Sent!</h3>
-            <div class="mt-2 text-sm text-gray-500">
-                <p>Thank you for contacting us. We'll get back to you soon.</p>
-            </div>
-            <div class="mt-5">
-                <button type="button" onclick="closeModal()"
-                    class="inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-600 text-base font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:text-sm">
-                    Close
+
+            <div class="mt-12 flex flex-wrap justify-center gap-4">
+                <button
+                    class="px-6 py-3 bg-indigo-900 text-white rounded-lg font-bold hover:bg-indigo-800 transition-colors duration-300">
+                    Register Now
+                </button>
+                <button
+                    class="px-6 py-3 border-2 border-indigo-900 text-indigo-900 rounded-lg font-bold hover:bg-indigo-50 transition-colors duration-300">
+                    Learn More
+                </button>
+                <button
+                    class="px-6 py-3 bg-gray-100 text-indigo-900 rounded-lg font-bold hover:bg-gray-200 transition-colors duration-300">
+                    Become a Sponsor
                 </button>
             </div>
         </div>
-    </div>
+    </section>
 
-    <script>
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Show loading state
-            const submitBtn = document.getElementById('submitBtn');
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Sending...';
-            submitBtn.disabled = true;
-            
-            // Simulate form submission
-            setTimeout(() => {
-                document.getElementById('successModal').classList.remove('hidden');
-                submitBtn.innerHTML = '<i class="fas fa-paper-plane mr-2"></i> Send Message';
-                submitBtn.disabled = false;
-                this.reset();
-            }, 1500);
-        });
-        
-        function closeModal() {
-            document.getElementById('successModal').classList.add('hidden');
-        }
-    </script>
+    <!-- Featured Poets Marquee -->
+    <section class="py-12 border-t border-b border-gray-200 bg-white">
+        <div class="marquee-pause overflow-hidden">
+            <div class="people-name1 marquee-animate whitespace-nowrap flex gap-4">
+                <!-- Poet 1 -->
+                <button
+                    class="inline-flex items-center px-6 py-3 bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-all duration-300">
+                    <img src="image1.jpg" alt="NADEEM BHABHA" class="w-10 h-10 rounded-full object-cover mr-3">
+                    <span class="font-medium">NADEEM BHABHA</span>
+                    <span class="ml-4 text-gray-400">→</span>
+                </button>
+
+                <!-- Poet 2 -->
+                <button
+                    class="inline-flex items-center px-6 py-3 bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-all duration-300">
+                    <img src="image2.jpg" alt="GHAZANFAR HASHMI" class="w-10 h-10 rounded-full object-cover mr-3">
+                    <span class="font-medium">GHAZANFAR HASHMI</span>
+                    <span class="ml-4 text-gray-400">→</span>
+                </button>
+
+                <!-- Poet 3 -->
+                <button
+                    class="inline-flex items-center px-6 py-3 bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-all duration-300">
+                    <img src="image3.jpg" alt="AFZAL KHAN" class="w-10 h-10 rounded-full object-cover mr-3">
+                    <span class="font-medium">AFZAL KHAN</span>
+                    <span class="ml-4 text-gray-400">→</span>
+                </button>
+
+                <!-- Poet 4 -->
+                <button
+                    class="inline-flex items-center px-6 py-3 bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-all duration-300">
+                    <img src="image4.jpg" alt="Fareeha Naqvi" class="w-10 h-10 rounded-full object-cover mr-3">
+                    <span class="font-medium">Fareeha Naqvi</span>
+                    <span class="ml-4 text-gray-400">→</span>
+                </button>
+
+                <!-- Poet 5 -->
+                <button
+                    class="inline-flex items-center px-6 py-3 bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-all duration-300">
+                    <img src="image5.jpg" alt="Dilawar Ali Aazar" class="w-10 h-10 rounded-full object-cover mr-3">
+                    <span class="font-medium">Dilawar Ali Aazar</span>
+                    <span class="ml-4 text-gray-400">→</span>
+                </button>
+
+                <!-- Poet 6 -->
+                <button
+                    class="inline-flex items-center px-6 py-3 bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-all duration-300">
+                    <img src="image6.jpg" alt="Abbas Qamar" class="w-10 h-10 rounded-full object-cover mr-3">
+                    <span class="font-medium">Abbas Qamar</span>
+                    <span class="ml-4 text-gray-400">→</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Previous Highlights Section -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900">Previous Highlights</h2>
+            <div class="relative h-1 w-32 mx-auto bg-gradient-to-r from-yellow-400 to-yellow-400 mb-16"></div>
+            <div class="grid grid-cols-4 lg:grid-cols-3 gap-8"></div>
+            <!-- Additional content can be added here -->
+        </div>
+    </section>
+    <div class="past">
+        <div class="past-container">
+            <img src="past1.jpg" alt="Past Event 1" class="past-image active">
+            <img src="past2.jpg" alt="Past Event 2" class="past-image">
+            <img src="past3.jpg" alt="Past Event 3" class="past-image">
+            <img src="past4.jpg" alt="Past Event 4" class="past-image">
+            <img src="past5.jpg" alt="Past Event 5" class="past-image">
+        </div>
+
+        <div class="past-text">
+            <h3>
+                International Urdu Poetry Symposium (Mushaira) in Sharjah held by TARQEEM<br>
+                in titled <br>
+                'Hum Naghma Sraa Kuch Ghazlou'n Ke '<br>
+
+                An International Mushaira was held at Pakistan Social Center Sharjah on Sunday,<br>19th May 2024
+
+                The event was organised by Tarqeem, in collaboration with <br>Chai Shai Restaurant and Cafe.
+
+                The mushairah set a precedent, as this was Tarqeem's<br>first international mushairah and was attended
+                by
+                renowned poets from India, Pakistan <br>and the UAE. Presided by poet, writer and critic, Akhter Usman
+                and
+                attended by <br>Dr. Sabahat Asim Wasti, Syed Sarosh Asif, Naveen Joshi, Ashwani Mittal, <br>Dilawar Ali
+                Aazar,
+                Ali Zeerak, Ehya Bhojpuri, Nilofer Afzal, Usman Habeeb, Ahmed<br>Jahangeer, Malik Irfan, Abrar Umar and
+                Muskan Syed Riaz<br>
+
+                The event concluded on a high note, with the audience visibly moved and <br> enriched — a true testament
+                to
+                the enduring power of Urdu poetry. Tarqeem successfully<br> set a new standard, not just for literary
+                gatherings in the UAE, but for international poetic discourse.<br>
+
+            </h3>
+        </div>
+    </div>
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white mt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">TURQEEM</h3>
+                    <p class="text-gray-400">Making the world better through innovative solutions.</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Company</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">About</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Careers</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Blog</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Support</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Help Center</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Contact Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Connect With Us</h4>
+                    <div class="flex space-x-4">
+                        <a href="https://www.facebook.com/share/1GBDvV5VxM/" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://youtube.com/@tarqeemuae?si=nEXS72x2WQdeIOIs"
+                            class="text-gray-400 hover:text-white">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="https://www.instagram.com/tarqeemuae?igsh=c3hodThmZ3U0NnF0"
+                            class="text-gray-400 hover:text-white">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://www.tiktok.com/@tarqeemuae?_t=ZS-8yiMYQkTrKi&_r=1"
+                            class="text-gray-400 hover:text-white">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" style="margin-top:5px;"
+                                viewBox="0 0 48 48" aria-hidden="true" focusable="false">
+                                <title>TikTok icon</title>
+                                <path fill="#acaeae"
+                                    d="M23.98 0h5.05c.08 2.29.92 4.45 2.39 6.2 1.44 1.74 3.56 2.86 5.83 3.03v5.17a11.72 11.72 0 0 1-6.03-1.65c-.9-.53-1.71-1.18-2.44-1.9l.03 13.86c0 2.66-1.06 5.21-2.94 7.08a10.02 10.02 0 0 1-7.1 2.94c-2.59 0-5.17-1.03-7.07-2.94A9.97 9.97 0 0 1 8.66 23.8c0-5.55 4.53-10.06 10.07-10.06.7 0 1.39.08 2.07.24v5.27a5.02 5.02 0 0 0-7.07 4.55 5.02 5.02 0 0 0 5.02 5.02c1.38 0 2.65-.55 3.57-1.47a5.04 5.04 0 0 0 1.48-3.55V0z" />
+                                <path fill="#acaeae"
+                                    d="M23.98 0h5.05c.08 2.29.92 4.45 2.39 6.2 1.44 1.74 3.56 2.86 5.83 3.03v5.17a11.72 11.72 0 0 1-6.03-1.65l.03 13.86c0 2.66-1.06 5.21-2.94 7.08a10.02 10.02 0 0 1-7.1 2.94c-2.59 0-5.17-1.03-7.07-2.94A9.97 9.97 0 0 1 8.66 23.8c0-5.55 4.53-10.06 10.07-10.06.7 0 1.39.08 2.07.24v5.27a5.02 5.02 0 0 0-7.07 4.55 5.02 5.02 0 0 0 5.02 5.02c1.38 0 2.65-.55 3.57-1.47a5.04 5.04 0 0 0 1.48-3.55V0z"
+                                    opacity=".3" />
+                            </svg>
+
+
+
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2023 YourBrand. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <script src="script.js"></script>
 </body>
+
 </html>
